@@ -1,13 +1,9 @@
-package com.devseguro.contratacionback.impl;
+package com.devseguro.contratacionback.service.impl;
 
-import java.io.Console;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.ZoneId;
 import java.time.temporal.ChronoUnit;
-import java.util.ArrayList;
-import java.util.Date;
+
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -155,6 +151,8 @@ public class GestionSeguroImpl  implements GestionSeguroService{
 							 anyoConstruccionImporte*BASE+
 							 residentesHabitualesImporte+
 							 UBICACION.get(vivienda.getUbicacion())*BASE+
+							 contienenteImporte+
+							 contenidoImporte+
 							 proteccionImporte*BASE+
 							 coberturasImporte;
 		System.out.println("*****************Presupuesto: "+presupuesto);

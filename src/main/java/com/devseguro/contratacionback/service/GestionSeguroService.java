@@ -1,6 +1,5 @@
 package com.devseguro.contratacionback.service;
 
-import java.util.List;
 
 import com.devseguro.contratacionback.model.Vivienda;
 
