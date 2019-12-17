@@ -19,23 +19,38 @@ public class SeguroGestionController {
 	private GestionSeguroService gestionSeguroService;
 	
 
-	@GetMapping("vivienda/{codigo}")
-	public Vivienda getVivienda(@PathVariable(value="codigo") Long codigo) {
+	@GetMapping("/vivienda/{codigo}")
+	public Vivienda getVivienda(@PathVariable(value="codigo") Long codigo) throws Exception {
 		
 		System.out.println("Codigo vivienda en Controller: "+ codigo);
-		//return new Vivienda();
+		Vivienda vivienda;
+		try {
+			 vivienda = gestionSeguroService.getVivienda(codigo);
+		} catch (Exception e) {
+			System.out.println("*******hello");
+			throw new Exception("La que vivienda no existe");
+		}
 		
+		System.out.println(vivienda);
 		return gestionSeguroService.getVivienda(codigo);
 	}
+
+	
+	@PostMapping("/vivienda")
+	public Vivienda setVivienda(@RequestBody Vivienda vivienda) throws Exception {
+		
+		System.out.println(vivienda);
+		gestionSeguroService.setVivienda(vivienda);
+		
+		return this.getVivienda(vivienda.getCodigo());	
+	}
+	
 	
 	@PostMapping("/presupuesto")
 	public double calcularSeguro(@RequestBody Vivienda vivienda) {
+		
 		System.out.println(vivienda);
-		if(true) {
-			gestionSeguroService.setVivienda(vivienda);
-		}
+		
 		return gestionSeguroService.calcularSeguro(vivienda);
 	}
-	
-
 }
