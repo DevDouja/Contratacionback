@@ -50,7 +50,7 @@ public class CatastroServicesImpl implements CatastroServices {
 	@Override
 	public Inmueble getInmueble(Direccion direccion) {
 		
-		char inicialCalle = direccion.getNombre().charAt(0);
+		char inicialCalle = direccion.getNombre().toUpperCase().charAt(0);
 		
 		Inmueble inmueble = null;
 		
