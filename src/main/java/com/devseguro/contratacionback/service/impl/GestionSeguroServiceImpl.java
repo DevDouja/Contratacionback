@@ -7,12 +7,9 @@ import java.time.temporal.ChronoUnit;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.devseguro.contratacionback.model.Vivienda;
-import com.devseguro.contratacionback.repositories.ViviendaRepository;
 import com.devseguro.contratacionback.service.GestionSeguroService;
 
 @Service
@@ -66,22 +63,6 @@ public class GestionSeguroServiceImpl  implements GestionSeguroService{
 		COBERTURAS.put("Incendio", 20.0);
 		COBERTURAS.put("DanyosConsecuenciales ", 10.0);	
 	
-	}
-	
-	
-	/* El servicios que nos permite guardar las viviendas en la base de datos*/
-	@Autowired
-	private ViviendaRepository viviendaRepository;
-	
-	
-	public Vivienda read(Long codigo) {
-		System.out.println("Codigo vivienda en Impl: "+ codigo);
-		return viviendaRepository.getOne(codigo);
-	}
-	
-	@Override
-	public void create(Vivienda vivienda) {
-		viviendaRepository.save(vivienda);
 	}
 	
 	@Override

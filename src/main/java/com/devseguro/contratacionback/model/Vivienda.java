@@ -5,60 +5,25 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
-import javax.persistence.Transient;
-
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
-@Entity
-@Table(name="VIVIENDA")
 public class Vivienda implements Serializable {
 	private static final long serialVersionUID = 1L;
-	
-	@Id
+
 	private Long codigo;
-	
 	private String relacion;
 	private String uso;
 	private String tipo;
-	
-	@Column(name="TIPO_CONSTRUCCION")
 	private String tipoConstruccion;
-	
-	@Column(name="SUPERFICIE")
 	private double superficieConstruida;
-	
-	@Temporal(TemporalType.DATE)
-	@Column(name="ANYO_CONSTRUCCION")
 	private Date anyoConstruccion;
-	
-	@Column(name="RESIDENTES")
 	private Long ResidentesHabituales;
-	
 	private String ubicacion;
-	
-	@Column(name="CODIGO_POSTAL")
 	private String codigoPostal;
-	
-	@JsonIgnore
-	@Transient
 	private String poblacion;
-	
-	@Column(name="PUERTA_BLINDAD")
 	private boolean puertaBlindad;
-	
 	private boolean rejas;
 	private boolean alarma;
 	private double contienente;
 	private double contenido;
-	
-	@JsonIgnore
-	@Transient
 	private List<String> coberturas = new ArrayList<String>();
 	
 	public Vivienda() {
