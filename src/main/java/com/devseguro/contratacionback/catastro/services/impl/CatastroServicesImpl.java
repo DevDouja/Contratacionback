@@ -4,7 +4,9 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.stereotype.Service;
 
@@ -16,6 +18,7 @@ import com.devseguro.contratacionback.catastro.services.CatastroServices;
 public class CatastroServicesImpl implements CatastroServices {
 
 	private static final List<Inmueble> INMUEBLES = new ArrayList<>();
+	private static final Map<String,String> PROVENCIAS = new HashMap<String, String>();
 	
 	static {
 		
@@ -45,6 +48,11 @@ public class CatastroServicesImpl implements CatastroServices {
 		INMUEBLES.add(inmueble3);
 		INMUEBLES.add(inmueble4);
 		
+		PROVENCIAS.put("08","Barcelona");
+		PROVENCIAS.put("28","Madrid");
+		PROVENCIAS.put("17","Girona");
+		PROVENCIAS.put("18","Granada");
+		PROVENCIAS.put("43","Taragona");
 	}
 	
 	@Override
@@ -68,10 +76,26 @@ public class CatastroServicesImpl implements CatastroServices {
 		case 'L' : inmueble = INMUEBLES.get(3);
 				   inmueble.setDireccion(direccion);
 		   		   break;
-		
+		default  : inmueble = INMUEBLES.get(3);
+				   break;
 		}
 		
 		return inmueble;
+	}
+	
+	public String getProvencia(String codigoPostal) {
+		
+		String provencia = "Barcelona";
+		String codigo = codigoPostal.substring(0,2);
+		System.out.println(codigo);
+		
+		for(String key: PROVENCIAS.keySet()) {
+			if(key.equals(codigo)) {
+				provencia = PROVENCIAS.get(key);
+				return provencia;
+			}
+		}
+		return provencia;
 	}
 
 }
