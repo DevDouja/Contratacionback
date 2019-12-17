@@ -18,7 +18,6 @@ public class SeguroGestionController {
 	@Autowired
 	private GestionSeguroService gestionSeguroService;
 	
-
 	@GetMapping("/vivienda/{codigo}")
 	public Vivienda getVivienda(@PathVariable(value="codigo") Long codigo) throws Exception {
 		
@@ -35,7 +34,6 @@ public class SeguroGestionController {
 		return gestionSeguroService.read(codigo);
 	}
 
-	
 	@PostMapping("/vivienda")
 	public Vivienda setVivienda(@RequestBody Vivienda vivienda) throws Exception {
 		
@@ -44,7 +42,6 @@ public class SeguroGestionController {
 		
 		return this.getVivienda(vivienda.getCodigo());	
 	}
-	
 	
 	@PostMapping("/presupuesto")
 	public double calcularSeguro(@RequestBody Vivienda vivienda) {

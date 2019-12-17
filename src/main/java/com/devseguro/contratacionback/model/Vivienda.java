@@ -15,18 +15,14 @@ import javax.persistence.Transient;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
-
-
 @Entity
 @Table(name="VIVIENDA")
 public class Vivienda implements Serializable {
-	
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
+	
 	@Id
 	private Long codigo;
+	
 	private String relacion;
 	private String uso;
 	private String tipo;
@@ -49,7 +45,6 @@ public class Vivienda implements Serializable {
 	@Column(name="CODIGO_POSTAL")
 	private String codigoPostal;
 	
-	
 	@JsonIgnore
 	@Transient
 	private String poblacion;
@@ -58,19 +53,17 @@ public class Vivienda implements Serializable {
 	private boolean puertaBlindad;
 	
 	private boolean rejas;
-	
 	private boolean alarma;
-	
 	private double contienente;
-	
 	private double contenido;
-	
 	
 	@JsonIgnore
 	@Transient
 	private List<String> coberturas = new ArrayList<String>();
 	
-	public Vivienda() {System.out.println("Soy vivienda");}
+	public Vivienda() {
+		System.out.println("Soy vivienda");
+	}
 	
 	public Vivienda(Long código, String relacion, String uso, String tipo, String tipoConstruccion,
 			double superficieConstruida, Date anyoConstruccion, Long residentesHabituales, String ubicacion,
@@ -238,8 +231,4 @@ public class Vivienda implements Serializable {
 				+ contienente + ", contenido=" + contenido + ", coberturas=" + coberturas + "]";
 	}
 	
-	
-
-
-
 }
