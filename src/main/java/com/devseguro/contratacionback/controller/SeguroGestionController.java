@@ -25,14 +25,14 @@ public class SeguroGestionController {
 		System.out.println("Codigo vivienda en Controller: "+ codigo);
 		Vivienda vivienda;
 		try {
-			 vivienda = gestionSeguroService.getVivienda(codigo);
+			 vivienda = gestionSeguroService.read(codigo);
 		} catch (Exception e) {
 			System.out.println("*******hello");
 			throw new Exception("La que vivienda no existe");
 		}
 		
 		System.out.println(vivienda);
-		return gestionSeguroService.getVivienda(codigo);
+		return gestionSeguroService.read(codigo);
 	}
 
 	
@@ -40,7 +40,7 @@ public class SeguroGestionController {
 	public Vivienda setVivienda(@RequestBody Vivienda vivienda) throws Exception {
 		
 		System.out.println(vivienda);
-		gestionSeguroService.setVivienda(vivienda);
+		gestionSeguroService.create(vivienda);
 		
 		return this.getVivienda(vivienda.getCodigo());	
 	}

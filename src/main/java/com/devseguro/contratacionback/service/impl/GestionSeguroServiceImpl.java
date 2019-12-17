@@ -12,16 +12,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.devseguro.contratacionback.model.Vivienda;
-import com.devseguro.contratacionback.repositories.SeguroPersist;
+import com.devseguro.contratacionback.repositories.ViviendaRepository;
 import com.devseguro.contratacionback.service.GestionSeguroService;
 
 @Service
-public class GestionSeguroImpl  implements GestionSeguroService{
-	
-	
-	/* El servicios que nos permite guardar las viviendas en la base de datos*/
-	@Autowired
-	private SeguroPersist seguroPersist;
+public class GestionSeguroServiceImpl  implements GestionSeguroService{
 	
 	private static final double BASE = 100;
 	private static final Map<String, Double> RELACION = new HashMap<String, Double>();
@@ -30,7 +25,6 @@ public class GestionSeguroImpl  implements GestionSeguroService{
 	private static final Map<String, Double> TIPOCONSTRUCCION = new HashMap<String, Double>();
 	private static final Map<String, Double> UBICACION = new HashMap<String, Double>();
 	private static final Map<String, Double> COBERTURAS = new HashMap<String, Double>();
-	
 	
 	static {
 		
@@ -75,14 +69,19 @@ public class GestionSeguroImpl  implements GestionSeguroService{
 	}
 	
 	
-	public Vivienda getVivienda(Long codigo) {
+	/* El servicios que nos permite guardar las viviendas en la base de datos*/
+	@Autowired
+	private ViviendaRepository viviendaRepository;
+	
+	
+	public Vivienda read(Long codigo) {
 		System.out.println("Codigo vivienda en Impl: "+ codigo);
-		return seguroPersist.getOne(codigo);
+		return viviendaRepository.getOne(codigo);
 	}
 	
 	@Override
-	public void setVivienda(Vivienda vivienda) {
-		seguroPersist.save(vivienda);
+	public void create(Vivienda vivienda) {
+		viviendaRepository.save(vivienda);
 	}
 	
 	@Override

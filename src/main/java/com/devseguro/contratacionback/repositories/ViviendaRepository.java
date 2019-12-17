@@ -6,6 +6,6 @@ import org.springframework.stereotype.Repository;
 import com.devseguro.contratacionback.model.Vivienda;
 
 @Repository
-public interface SeguroPersist extends JpaRepository<Vivienda, Long> {
+public interface ViviendaRepository extends JpaRepository<Vivienda, Long> {
 	
 }
