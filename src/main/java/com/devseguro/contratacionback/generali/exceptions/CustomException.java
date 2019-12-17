@@ -1,4 +1,4 @@
-package com.devseguro.contratacionback.exceptions;
+package com.devseguro.contratacionback.generali.exceptions;
 
 import org.springframework.http.HttpStatus;
 

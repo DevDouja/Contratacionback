@@ -1,4 +1,4 @@
-package com.devseguro.contratacionback.model;
+package com.devseguro.contratacionback.generali.model;
 
 import java.io.Serializable;
 import java.util.ArrayList;

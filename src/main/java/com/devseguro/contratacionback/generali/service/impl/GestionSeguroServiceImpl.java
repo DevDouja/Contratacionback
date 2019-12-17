@@ -1,4 +1,4 @@
-package com.devseguro.contratacionback.service.impl;
+package com.devseguro.contratacionback.generali.service.impl;
 
 import java.time.LocalDate;
 import java.time.ZoneId;
@@ -9,8 +9,8 @@ import java.util.List;
 import java.util.Map;
 import org.springframework.stereotype.Service;
 
-import com.devseguro.contratacionback.model.Vivienda;
-import com.devseguro.contratacionback.service.GestionSeguroService;
+import com.devseguro.contratacionback.generali.model.Vivienda;
+import com.devseguro.contratacionback.generali.service.GestionSeguroService;
 
 @Service
 public class GestionSeguroServiceImpl  implements GestionSeguroService{
