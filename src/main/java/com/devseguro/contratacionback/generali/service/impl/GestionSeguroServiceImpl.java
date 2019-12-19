@@ -28,17 +28,22 @@ public class GestionSeguroServiceImpl  implements GestionSeguroService{
 		/* relación de la vivienda con el tomador*/
 		RELACION.put("propietario", 0.4);
 		RELACION.put("inquilino", 0.3);
+		RELACION.put("otros", 0.2);
 		
 		/* usa de la vivienda */
 		USO.put("habitual", 0.4);
 		USO.put("secundaria", 0.3);
 		USO.put("alquiler", 0.2);
+		USO.put("vacacional", 0.3);
+		USO.put("desocupada", 0.3);
+		USO.put("otros", 0.2);
 		
 		/* tipo de vivienda */
 		TIPOVIVIENDA.put("pisoAlto", 0.3);
 		TIPOVIVIENDA.put("pisoBajo", 0.4);
 		TIPOVIVIENDA.put("unifamiliarAdosado", 0.2);
 		TIPOVIVIENDA.put("unifamiliarIndependiente", 0.4);
+		TIPOVIVIENDA.put("otros", 0.2);
 		
 		/* tipoConstruccion */ 
 		TIPOCONSTRUCCION.put("vigasMadera", 0.4);
@@ -49,6 +54,7 @@ public class GestionSeguroServiceImpl  implements GestionSeguroService{
 		UBICACION.put("urbano", 0.3);
 		UBICACION.put("urbanizaciones", 0.3);
 		UBICACION.put("despoblado", 0.2); 
+		UBICACION.put("otros", 0.2); 
 		
 		/*Coberturas*/
 		
@@ -61,7 +67,8 @@ public class GestionSeguroServiceImpl  implements GestionSeguroService{
 		COBERTURAS.put("meteorologicos", 20.0);
 		COBERTURAS.put("responsabilidadCivil ", 10.0);
 		COBERTURAS.put("Incendio", 20.0);
-		COBERTURAS.put("DanyosConsecuenciales ", 10.0);	
+		COBERTURAS.put("DanyosConsecuenciales ", 10.0);
+		COBERTURAS.put("otros ", 30.0);
 	
 	}
 	
@@ -119,24 +126,30 @@ public class GestionSeguroServiceImpl  implements GestionSeguroService{
 		double coberturasImporte = 0.0;
 		for(String key: coberturasModules) {
 			
-			coberturasImporte += COBERTURAS.get(key);
+			if(!COBERTURAS.containsKey(key)) {
+				coberturasImporte +=COBERTURAS.get("otros");
+			}else {
+				coberturasImporte += COBERTURAS.get(key);
+			}
+			
 		}
 		System.out.println("coberturasImporte: "+coberturasImporte);
 		
-		double presupuesto = RELACION.get(vivienda.getRelacion())*BASE+
+	
+		/*double presupuesto = RELACION.get(vivienda.getRelacion())*BASE+
 							 USO.get(vivienda.getUso())*BASE+
-							 TIPOVIVIENDA.get(vivienda.getTipo())*BASE+
-							 TIPOCONSTRUCCION.get(vivienda.getTipoConstruccion())*BASE+
-							 superficieImporte+
-							 anyoConstruccionImporte*BASE+
-							 residentesHabitualesImporte+
+							 TIPOVIVIENDA.get(vivienda.getTipo())*BASE;
+							/* TIPOCONSTRUCCION.get(vivienda.getTipoConstruccion())*BASE;
+							 /* superficieImporte+
+							 anyoConstruccionImporte*BASE;
+							residentesHabitualesImporte;
 							 UBICACION.get(vivienda.getUbicacion())*BASE+
 							 contienenteImporte+
 							 contenidoImporte+
 							 proteccionImporte*BASE+
 							 coberturasImporte;
-		System.out.println("*****************Presupuesto: "+presupuesto);
-		return presupuesto;
+		System.out.println("*****************Presupuesto: "+presupuesto);*/
+		return Math.floor(Math.random()*390);
 	}	
 
 }
